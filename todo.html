@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>To-Do List</title>
+        <style>
+        body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f8f8; /* Light Gray */
+        }
+        header {
+        background-color: #ffcc99; /* Pastel Orange */
+        padding: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        }
+        header .logo {
+        color: #ff66b2; /* Cute Pink */
+        font-size: 24px;
+        font-weight: bold;
+        }
+        .todo-container {
+        background-color: #fff;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        text-align: center;
+        }
+        input[type="text"] {
+        width: 60%; /* Reduced width */
+        padding: 10px;
+        margin-bottom: 16px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        }
+        button {
+        background-color: #e74c3c; /* Red color for delete button */
+        color: #fff;
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-left: 5px; /* Added margin */
+        }
+        button:hover {
+        background-color: #c0392b; /* Darker red on hover */
+        }
+        ul {
+        list-style-type: none;
+        padding: 0;
+        }
+        li {
+        background-color: #ecf0f1; /* Light Grayish Blue */
+        margin: 8px 0;
+        padding: 10px;
+        border-radius: 8px; /* Increased border radius */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        }
+        li button {
+        background-color: #e74c3c; /* Red color for delete button */
+        color: #fff;
+        padding: 5px 10px;
+        font-size: 12px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        }
+        header {
+        background-color: #ffcc99; /* Pastel Orange */
+        padding: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        }
+        header .logo {
+        color: #ff66b2; /* Cute Pink */
+        font-size: 24px;
+        font-weight: bold;
+        }
+        nav {
+        background-color: #ffcc99; /* Pastel Orange */
+        padding: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        display: flex;
+        justify-content: center;
+        }
+        nav a {
+        margin: 0 15px;
+        text-decoration: none;
+        color: #333333;
+        font-weight: bold;
+        font-size: 16px;
+        transition: color 0.3s ease;
+        }
+        nav a:hover {
+        color: #ff66b2; /* Cute Pink */
+        }
+        main {
+        margin: 20px;
+        }
+        </style>
+    </head>
+    <body>
+        <header>
+            <div class="logo">iSTUDY</div>
+            <nav>
+                <a href="homepage.html">Home</a>
+                <a href="library.html">Library</a>
+                <a href="notes.html">Notes</a>
+                <a href="todo.html">To do</a>
+                <a href="pomodoro.html" target="_blank">Pomodoro</a>
+                <a href="methods.html">Methods</a>
+                <a href="sounds.html">Sounds</a>
+            </nav>
+        </header>
+        <div class="todo-container">
+            <h1>To-Do List</h1>
+            <input type="text" id="taskInput" placeholder="Add a new task...">
+            <button onclick="addTask()">Add</button>
+            <ul id="taskList"></ul>
+        </div>
+        <script>
+            function addTask() {
+                const taskInput = document.getElementById('taskInput');
+                const taskList = document.getElementById('taskList');
+
+                if (taskInput.value.trim() !== '') {
+                    const li = document.createElement('li');
+                    li.innerHTML = `${taskInput.value} <button
+                    onclick="deleteTask(this)">Delete</button>`;
+                    taskList.appendChild(li);
+                    taskInput.value = '';
+                }
+            }
+            function deleteTask(element) {
+                const li = element.parentElement;
+                li.remove();
+            }
+        </script>
+    </body>
+</html>

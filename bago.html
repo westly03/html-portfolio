@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #ff9a8b, #ffd271); /* Gradient colors */
+        }
+
+        .landing-container {
+            text-align: center;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #ff66b2; /* Cute Pink */
+        }
+
+        p {
+            color: #333333;
+            margin-bottom: 20px;
+        }
+
+        .enter-button {
+            padding: 10px 20px;
+            background-color: #ff66b2; /* Cute Pink */
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .enter-button:hover {
+            background-color: #ff3385; /* Slightly darker pink on hover */
+        }
+    </style>
+    <title>StudyBuddy</title>
+</head>
+<body>
+
+    <div class="landing-container">
+        <h1>Welcome to iSTUDY Website!</h1>
+        <p>Pen the Path to Progress.</p>
+        <button class="enter-button" onclick="goToDashboard()">Enter Dashboard</button>
+    </div>
+
+    <script>
+        function goToDashboard() {
+            // Redirect to the dashboard
+            window.location.href = 'index.html';
+        }
+    </script>
+
+</body>
+</html>
