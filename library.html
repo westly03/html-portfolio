@@ -8,7 +8,9 @@
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         margin: 0;
         padding: 0;
+      
         background-color: #f8f8f8; /* Light Gray */
+        height: 100vh;
         }
         header {
         background-color: #ffcc99; /* Pastel Orange */
@@ -44,6 +46,84 @@
         main {
         margin: 20px;
         }
+
+        .container{
+            background-color:#ccffcc;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        h1{
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        label{
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input {
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        .buttonsht {
+            display:flex;
+            justify-content: flex-end;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            background-color:#ff66b2;
+            color:black;
+            border:none;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+
+        button:hover{
+            background-color: #ff3385;
+        }
+
+        .selected {
+            background-color: salmon;
+        }
+
+
+        #status {
+            margin-top: 20px;
+            text-align: center;
+            color: #333;
+        }
+
+        #fileList {
+            margin-top: 20px;
+        }
+
+        .file-item {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .file-item:hover {
+            background-color: #f9f9f9;
+        }
+
     </style>
 </head>
 <body>
@@ -59,8 +139,59 @@
         <a href="sounds.html">Sounds</a>
         </nav>
     </header>
-    <div>
-        <h1></h1>
+    <div class="container">
+        <h1>File Upload</h1>
+        <input type="file" id="fileInput" />
+        
+        <div class="buttonsht">
+            <button onclick="uploadFile()">Upload</button>
+            <button onclick="deleteSelectedFiles()">Delete Selected File/s</button>
+        </div>
+
+        <div id="fileList"></div>
     </div>
+    <script>
+        var selectedFiles = [];
+
+        function uploadFile() {
+            var fileInput = document.getElementById('fileInput');
+            var fileList = document.getElementById('fileList');
+
+            var files = fileInput.files;
+
+            for (var i = 0; i < files.length; i++) {
+                var file = files[i];
+                var listItem = document.createElement('div');
+                listItem.textContent = file.name;
+                listItem.classList.add('file-item');
+
+                listItem.onclick = function() {
+                    if (this.classList.contains('selected')) {
+                        this.classList.remove('selected');
+                        selectedFiles = selectedFiles.filter(selectedFile => selectedFile !== this);
+                    } else {
+                        this.classList.add('selected');
+                        selectedFiles.push(this);
+                    }
+                };
+
+                listItem.ondblclick = function() {
+                    window.open(URL.createObjectURL(file), '_blank');
+                };
+
+                fileList.appendChild(listItem);
+            }
+
+            fileInput.value = '';
+        }
+
+        function deleteSelectedFiles() {
+            var fileList = document.getElementById('fileList');
+            selectedFiles.forEach(selectedFile => {
+                fileList.removeChild(selectedFile);
+            });
+            selectedFiles = [];
+        }
+    </script>
 </body>
 </html>
