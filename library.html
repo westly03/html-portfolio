@@ -9,11 +9,11 @@
         margin: 0;
         padding: 0;
       
-        background-color: #f8f8f8; /* Light Gray */
+        background-color: #f8f8f8; 
         height: 100vh;
         }
         header {
-        background-color: #ffcc99; /* Pastel Orange */
+        background-color: #ffcc99;
         padding: 10px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         display: flex;
@@ -21,12 +21,12 @@
         align-items: center;
         }
         header .logo {
-        color: #ff66b2; /* Cute Pink */
+        color: #ff66b2;
         font-size: 24px;
         font-weight: bold;
         }
         nav {
-        background-color: #ffcc99; /* Pastel Orange */
+        background-color: #ffcc99; 
         padding: 10px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         display: flex;
@@ -41,7 +41,7 @@
         transition: color 0.3s ease;
         }
         nav a:hover {
-        color: #ff66b2; /* Cute Pink */
+        color: #ff66b2; 
         }
         main {
         margin: 20px;
@@ -86,7 +86,7 @@
             padding: 10px 20px;
             margin: 5px;
             background-color:#ff66b2;
-            color:black;
+            color: white;
             border:none;
             cursor: pointer;
             border-radius: 10px;
@@ -124,6 +124,31 @@
             background-color: #f9f9f9;
         }
 
+        .custom-file-input {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ff66b2; 
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+            width: 100px;
+        }
+
+        .custom-file-input:hover {
+            background-color: #ff3385;
+        }
+
+        #fileInput {
+            display: none;
+        }
+
+        .file-selected::before {
+            content: 'File Selected: ';
+            color: #333;
+            font-weight: bold;
+        }
+
     </style>
 </head>
 <body>
@@ -140,8 +165,10 @@
         </nav>
     </header>
     <div class="container">
-        <h1>File Upload</h1>
-        <input type="file" id="fileInput" />
+        <h1>Upload Files Here</h1>
+        <label for="fileInput" class="custom-file-input" id="fileInputLabel" onclick="resetFileInput()">Choose File/s</label>
+        <input type="file" id="fileInput" onchange="updateFileLabel()"/>
+        
         
         <div class="buttonsht">
             <button onclick="uploadFile()">Upload</button>
@@ -191,6 +218,28 @@
                 fileList.removeChild(selectedFile);
             });
             selectedFiles = [];
+        }
+
+        function updateFileLabel() {
+            var fileInput = document.getElementById('fileInput');
+            var fileInputLabel = document.getElementById('fileInputLabel');
+
+            if (fileInput.files.length > 0) {
+                fileInputLabel.textContent = fileInput.files[0].name;
+                fileInputLabel.classList.add('file-selected');
+
+                var newFileInput = fileInput.cloneNode(true);
+                fileInput.parentNode.replaceChild(newFileInput, fileInput);
+            } else {
+                fileInputLabel.textContent = 'Choose File/s';
+                fileInputLabel.classList.remove('file-selected');
+            }
+        }
+
+        function resetFileInput() {
+            var fileInput = document.getElementById('fileInput');
+            fileInput.value = '';
+            updateFileLabel();
         }
     </script>
 </body>
