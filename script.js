@@ -1,3 +1,12 @@
+
+const loadContent = (file) => {
+  fetch(file)
+    .then(response => response.text())
+    .then(data => {
+      document.body.innerHTML = data;
+    });
+};
+
 let focusButton = document.getElementById("focus");
 let buttons = document.querySelectorAll(".btn");
 let shortBreakButton = document.getElementById("shortbreak");

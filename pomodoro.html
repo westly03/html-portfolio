@@ -6,17 +6,18 @@
     <title>Pomodoro</title>
     <style>
         body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        text-align: center;
-        margin: 0;
-        padding: 0;
-        background-color: #f8f8f8; /* Light Gray */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8; /* Light Gray */
         }
 
-        .timer{
+        .timer {
             font-size: 48px;
             margin-top: 50px;
         }
+
         button {
             font-size: 18px;
             padding: 10px 20px;
@@ -26,6 +27,23 @@
             color: white;
             border: none;
             border-radius: 5px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .section-container {
+            margin-bottom: 20px;
+        }
+
+        .btn-container {
+            display: flex;
+            gap: 10px;
         }
 
     </style>
@@ -52,4 +70,4 @@
       <script src="script.js"></script>
         
 </body>
-</html
+</html>
